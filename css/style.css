@@ -1,0 +1,34 @@
+:root {
+	--color-white: #ffffff;
+	--color-dark-text: #161012;
+	--color-dark-grey: #6b7376;
+	--color-text-grey: #b6bbc1;
+	--color-headers: #eaeaea;
+	--color-contact-active: #e9ebeb;
+	--color-light-icons: #b1b1b1;
+	--color-sent-message: #d5f9ba;
+	--color-notification: #8edafc;
+    background: linear-gradient(180deg, #009688 24.99%, #DCDBD3 25%);
+}
+
+body{
+    font-family: 'Lato', sans-serif;
+}
+#app{
+    width: 100%;
+    height: 100vh;
+    background: linear-gradient(180deg, #009688 24.99%, #DCDBD3 25%);
+    padding: 20px;
+}
+.contacts{
+    background-color: var(--color-white);
+}
+.header{
+    background-color: var(--color-headers);
+}
+.sent{
+
+}
+.received{
+    
+}
