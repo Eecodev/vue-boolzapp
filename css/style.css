@@ -1,5 +1,9 @@
 /* general */
-
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 :root {
 	--color-white: #ffffff;
 	--color-dark-text: #161012;
@@ -18,6 +22,7 @@ body{
 }
 img{
     width: 50px;
+    border-radius: 30px;
 }
 #app{
     width: 100%;
@@ -40,6 +45,9 @@ img{
 .received{
 
 }
+.bg-ntf{
+    background-color: var(--color-notification);
+}
 .ntf{
     font-size: 15px;
 }
@@ -47,4 +55,10 @@ img{
 /* icons */
 .fa-bell-slash{
     font-size: 25px;
+}
+
+/* right side */
+
+.bg-msg{
+    background-image: url('../img/mine.jpg');
 }
