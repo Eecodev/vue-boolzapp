@@ -7,5 +7,11 @@ createApp({
         return{
             contacts: contactList
         }
+    },
+    methods:{
+
+    },
+    computed:{
+        
     }
 }).mount('#app');
