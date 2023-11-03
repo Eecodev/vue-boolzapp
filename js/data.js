@@ -1,4 +1,4 @@
-export contacts = [
+export contactList = [
     {
         id: 1,
         name: 'Michele',
@@ -166,6 +166,6 @@ export contacts = [
                 message: 'OK!!',
                 status: 'received'
             }
-        ],
+        ]
     }
 ];
