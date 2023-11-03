@@ -39,6 +39,9 @@ img{
 .h0{
     height: 0;
 }
+.bg-img{
+    background-image: url('../img/mine.jpg');
+}
 .msg{
     padding: 10px 20px;
     border-radius: 10px;
