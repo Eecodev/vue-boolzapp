@@ -40,10 +40,12 @@ img{
     height: 0;
 }
 .sent{
-
+    margin-left: auto;
+    background-color: var(--color-sent-message);
 }
 .received{
-
+    margin-right: auto;
+    background-color: var(--color-white);
 }
 .bg-ntf{
     background-color: var(--color-notification);

@@ -20,7 +20,7 @@
                 <div class="col-12 col-md-4 contacts">
                     <div class="row h-100 flex-column flex-nowrap">
                         <!-- top-left header -->
-                        <div class="col-12 header d-flex justify-content-between align-items-center p-2">
+                        <div class="col-12 header border-end d-flex justify-content-between align-items-center p-2">
                             <div class="profile">
                                 <img src="./img/avatar_io.jpg" alt="Profile Picture">
                                 <span class="d-inline-block m-1">Mahdi</span>
@@ -56,8 +56,8 @@
 
                         <!-- contacts -->
                         <div class="col-12 flex-grow-1 overflow-y-auto h0">
-                            <div class="contact d-flex">
-                                <img :src="contacts.avatar" alt="">
+                            <div class="contact d-flex" v-for="(contact, index) in contacts" :key="contact.id>
+                                <img :src="contacts.avatar" :alt="contacts.name">
                                 <div class="p-1">
                                     <span>{{contacts.name}}</span>
                                     <small class="d-block">Ultimo messaggio inviato</small>
@@ -71,7 +71,7 @@
                 <div class="col-12 col-md-8">
                     <div class="row h-100 flex-column flex-nowrap">
                         <div class="col-12 header d-flex justify-content-between align-items-center p-2">
-                            <div class="d-flex" v-for="(contact, index) in contacts" :key="index>
+                            <div class="d-flex">
                                 <img src="./img/avatar_1.jpg" alt="Michele">
                                 <div class="p-1">
                                     <span>Michele</span>
@@ -85,11 +85,19 @@
                                 <i class="fa-solid fa-ellipsis-vertical m-1"></i>
                             </div>
                         </div>
-                        <div class="col-12 bg-msg">
-                            
+                        <div class="col-12 flex-grow-1 overflow-y-auto h0">
+                            <div class="d-flex py-3">
+                                <div class="msg sent"> hey ciao</div>
+                            </div>
+                            <div class="d-flex py-3">
+                                <div class="msg received">hey</div>
+                            </div>
                         </div>
-                        <div class="col-12">
-                            type text
+                        <div class="col-12 col-header py-2 d-flex align-items-center">
+                            <i class="fa-regular fa-face-smile me-3"></i>
+                            <input type="text" class="form-control me-3" placeholder="Send a message" v-model="message">
+                            <i class="fa-regular fa-paper-plane" style="cursor:pointer"></i>
+                            <i class="fa-solid fa-microphone"></i>
                         </div>
                     </div>
                 </div>

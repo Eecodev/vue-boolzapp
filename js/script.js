@@ -6,7 +6,9 @@ createApp({
     data(){
         return{
             contacts: contactList,
-            lastId: 8,
+            activeContactIndex: 0,
+            searchText: '',
+            message: ''
         }
     },
     methods:{
