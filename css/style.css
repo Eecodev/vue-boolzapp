@@ -39,6 +39,10 @@ img{
 .h0{
     height: 0;
 }
+.msg{
+    padding: 10px 20px;
+    border-radius: 10px;
+}
 .sent{
     margin-left: auto;
     background-color: var(--color-sent-message);
