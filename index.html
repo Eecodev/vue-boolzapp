@@ -37,7 +37,7 @@
                             <i class="fa-solid fa-bell-slash m-1"></i>
                             <div>
                                 <span>Ricevi notifiche di nuovi messaggi</span>
-                                <a href="#" class="d-block ntf">Attiva notifiche desktop</a>  
+                                <small><a href="#" class="d-block ntf">Attiva notifiche desktop</a></small>
                             </div>
                         </div>
 
@@ -56,13 +56,16 @@
 
                         <!-- contacts -->
                         <div class="col-12 flex-grow-1 overflow-y-auto h0">
-                            <div class="contact d-flex" v-for="(contact, index) in contacts" :key="contact.id">
+                            <div class="contact d-flex" :class="{'active': index === activeContactIndex}"  v-for="(contact, index) in contacts" :key="contact.id" @click="selectContact(contact.id)">
                                 <img :src="contact.avatar" :alt="contact.name">
                                 <div class="p-1">
                                     <span>{{contact.name}}</span>
-                                    <small class="d-block">Ultimo messaggio inviato</small>
+                                    <small class="d-block">{{getLastMessage()}}</small>
                                 </div>
                             </div>
+                            <!-- <div>
+                                <small>{{contact.messages[contact.messages.length -1].date}}</small>
+                            </div> -->
                         </div>
                     </div>
                 </div>
@@ -72,10 +75,10 @@
                     <div class="row h-100 flex-column flex-nowrap">
                         <div class="col-12 header d-flex justify-content-between align-items-center p-2">
                             <div class="d-flex">
-                                <img src="./img/avatar_1.jpg" alt="Michele">
+                                <img :src="activeContact.avatar" :alt="activeContact.name">
                                 <div class="p-1">
-                                    <span>Michele</span>
-                                    <small class="d-block">Ultimo accesso oggi alle 12:00</small>  
+                                    <span>{{activeContact.name}}</span>
+                                    <small v-if="activeContact.messages.length > 0" class="d-block">{{activeContact.messages[activeContact.messages.length -1].date}}</small>  
                                 </div>
                             </div>
                             
@@ -86,12 +89,12 @@
                             </div>
                         </div>
                         <div class="col-12 flex-grow-1 overflow-y-auto h0 bg-img">
-                            <div class="d-flex py-3">
-                                <div class="msg sent"> hey ciao</div>
+                            <div class="d-flex py-3" v-for="(message, index) in contacts[activeContactIndex].messages" :key="index">
+                                <div class="msg sent" :class="message.status"> hey ciao</div>
                             </div>
-                            <div class="d-flex py-3">
+                            <!-- <div class="d-flex py-3">
                                 <div class="msg received">hey</div>
-                            </div>
+                            </div> -->
                         </div>
                         <div class="col-12 col-header py-2 d-flex align-items-center">
                             <i class="fa-regular fa-face-smile me-3"></i>

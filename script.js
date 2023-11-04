@@ -12,9 +12,16 @@ createApp({
         }
     },
     methods:{
-
+        selectContact(id){
+            const index = this.contacts.findIndex((contact)=> contact.id === id);
+            if(index !== -1){
+                this.activeContactIndex = index;
+            }
+        }
     },
     computed:{
-        
+        activeContact(){
+            return this.contacts[this.activeContactIndex];
+        }
     }
 }).mount('#app');
