@@ -42,16 +42,13 @@
                         </div>
 
                         <!-- search bar -->
-                        <div class="col-12 mt-1">
-                            <div class="input-group mb-3">
+                        <div class="col-12 mt-1" id="search">
+                            <div class="input-group">
                                 <span class="input-group-text">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </span>
-                                <div class="form-floating">
-                                  <input type="text" class="form-control" id="floatingInputGroup1" placeholder="Username" v-model="searchText">
-                                  <label for="floatingInputGroup1">Cerca o inizia una nuova chat</label>
-                                </div>
-                              </div>
+                                <input type="text" class="form-control" placeholder="Search contacts" v-model="searchText">
+                            </div>
                         </div>
 
                         <!-- contacts -->

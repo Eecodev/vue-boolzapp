@@ -9,7 +9,8 @@ createApp({
             activeContactIndex: 0,
             searchText: '',
             message: '',
-            resp: 'ok'
+            resp: 'ok',
+            filteredContacts: []
         }
     },
     methods:{
@@ -53,7 +54,7 @@ createApp({
                 };
                 this.activeContact.messages.push(newMsg);
             }, 1000)
-        }
+        },
     },
     computed:{
         activeContact(){
@@ -66,6 +67,12 @@ createApp({
             } else{
                 return 'Unknown';
             }
+        },
+        filterContacts(id){
+            this.filteredContacts = this.contacts.filter((contact, index)=>{
+                return contact.name.toLowerCase().includes(this.searchText.toLowerCase());
+            });
+            this.contacts = filteredContacts;
         }
     }
 }).mount('#app');
