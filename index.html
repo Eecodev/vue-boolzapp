@@ -60,12 +60,10 @@
                                 <img :src="contact.avatar" :alt="contact.name">
                                 <div class="p-1">
                                     <span>{{contact.name}}</span>
-                                    <small class="d-block">{{getLastMessage()}}</small>
+                                    <small class="d-block">{{getLastMessage(contact.id)}}</small>
                                 </div>
                             </div>
-                            <!-- <div>
-                                <small>{{contact.messages[contact.messages.length -1].date}}</small>
-                            </div> -->
+                                
                         </div>
                     </div>
                 </div>
@@ -78,7 +76,7 @@
                                 <img :src="activeContact.avatar" :alt="activeContact.name">
                                 <div class="p-1">
                                     <span>{{activeContact.name}}</span>
-                                    <small v-if="activeContact.messages.length > 0" class="d-block">{{activeContact.messages[activeContact.messages.length -1].date}}</small>  
+                                    <small>Ultimo accesso {{lastDate}}</small>  
                                 </div>
                             </div>
                             
@@ -89,16 +87,13 @@
                             </div>
                         </div>
                         <div class="col-12 flex-grow-1 overflow-y-auto h0 bg-img">
-                            <div class="d-flex py-3" v-for="(message, index) in contacts[activeContactIndex].messages" :key="index">
-                                <div class="msg sent" :class="message.status"> hey ciao</div>
+                            <div class="d-flex py-3" v-for="(msg, index) in activeContact.messages" :key="index">
+                                <div class="msg" :class="msg.status">{{msg.message}}</div>
                             </div>
-                            <!-- <div class="d-flex py-3">
-                                <div class="msg received">hey</div>
-                            </div> -->
                         </div>
                         <div class="col-12 col-header py-2 d-flex align-items-center">
                             <i class="fa-regular fa-face-smile me-3"></i>
-                            <input type="text" class="form-control me-3" placeholder="Send a message" v-model="message">
+                            <input type="text" class="form-control me-3" placeholder="Send a message" v-model="message" @keyup.enter="newMessage">
                             <i class="fa-regular fa-paper-plane" style="cursor:pointer"></i>
                             <i class="fa-solid fa-microphone"></i>
                         </div>
