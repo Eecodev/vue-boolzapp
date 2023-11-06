@@ -54,6 +54,9 @@ createApp({
                 status
             };
             this.activeContact.messages.push(newMsg);
+            this.$nextTick(() => {
+                this.$refs.messages[this.$refs.messages.length -1].scrollIntoView({behavior: 'smooth'});
+            });
         },
         newMessage(){
             if(this.message){
@@ -64,6 +67,17 @@ createApp({
                 }, 1000)
             }
         },
+        dropDownOption(i){
+            if(this.msgIndex != i){
+                this.msgIndex = i;
+            } else{
+                this.msgIndex = null;
+            }
+        },
+        deleteMsg(){
+            this.activeContact.messages.splice(index,1);
+            this.msgIndex = null;
+        }
     },
     computed:{
         filteredContact(){
@@ -80,5 +94,8 @@ createApp({
                 return 'Unknown';
             }
         }
+    },
+    mounted(){
+        console.log(this.$refs.messages[this.$refs.messages.length -1]);
     }
 }).mount('#app');
