@@ -10,10 +10,20 @@ createApp({
             searchText: '',
             message: '',
             resp: 'ok',
-            filteredContacts: []
+            // filteredContacts: []
+            msgIndex: null,
         }
     },
     methods:{
+        filterMy(){
+            this.contacts.forEach(element=>{
+                if(!element.name.includes(this.searchText)){
+                    element.visible = false
+                } else{
+                    element.visible = true
+                }
+            })
+        },
         selectContact(id){
             const index = this.contacts.findIndex((contact)=> contact.id === id);
             if(index !== -1){
@@ -68,14 +78,9 @@ createApp({
                 return 'Unknown';
             }
         },
+        filteredContact(){
+          return this.contact.filter((contact)=> {
 
-
-
-        // filterContacts(id){
-        //     this.filteredContacts = this.contacts.filter((contact, index)=>{
-        //         return contact.name.toLowerCase().includes(this.searchText.toLowerCase());
-        //     });
-        //     this.contacts = filteredContacts;
-        // }
+          })
     }
 }).mount('#app');

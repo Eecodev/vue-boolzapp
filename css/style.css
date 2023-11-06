@@ -20,9 +20,10 @@
 body{
     font-family: 'Lato', sans-serif;
 }
-img{
+.profile{
     width: 50px;
-    border-radius: 30px;
+    height: 50px;
+    border-radius: 100%;
 }
 #app{
     width: 100%;

@@ -21,8 +21,8 @@
                     <div class="row h-100 flex-column flex-nowrap">
                         <!-- top-left header -->
                         <div class="col-12 col-header border-end d-flex justify-content-between align-items-center p-2">
-                            <div class="profile">
-                                <img src="./img/avatar_io.jpg" alt="Profile Picture">
+                            <div>
+                                <img class="profile" src="./img/avatar_io.jpg" alt="Profile Picture">
                                 <span class="d-inline-block m-1">Mahdi</span>
                             </div>
                             <div class="">
@@ -56,7 +56,7 @@
                             <div class="row">
                                 <div class="col-12 py-2 contact d-flex justify-content-between" :class="{'active': index === activeContactIndex}"  v-for="(contact, index) in contacts" :key="contact.id" @click="selectContact(contact.id)" v-show>
                                     <div class="d-flex">
-                                        <img :src="contact.avatar" :alt="contact.name">
+                                        <img class="profile" :src="contact.avatar" :alt="contact.name">
                                         <div class="ms-2">
                                             <strong>{{contact.name}}</strong><br>
                                             <small>{{getLastMessage(contact.id)}}</small>
