@@ -38,22 +38,22 @@ createApp({
                 return 'Unknown';
             }
         },
-        newMessage(){
+        generateMsg(message, status){
             const newMsg = {
-                date:new Date(),
-                message: this.message,
-                status: 'sent'
+                date: dt.now().setLocale('it').toLocaleString(dt.DATETIME_SHORT_WITH_SECONDS),
+                message,
+                status
             };
             this.activeContact.messages.push(newMsg);
-            this.message = '';
-            setTimeout(()=>{
-                const newMsg = {
-                    date: new Date(),
-                    message: this.resp,
-                    status: 'received'
-                };
-                this.activeContact.messages.push(newMsg);
-            }, 1000)
+        },
+        newMessage(){
+            if(this.message){
+                this.generateMsg(this.message,'sent');
+                this.message = '';
+                setTimeout(()=>{
+                    this.generateMsg(this.resp,'received');
+                }, 1000)
+            }
         },
     },
     computed:{
@@ -68,11 +68,14 @@ createApp({
                 return 'Unknown';
             }
         },
-        filterContacts(id){
-            this.filteredContacts = this.contacts.filter((contact, index)=>{
-                return contact.name.toLowerCase().includes(this.searchText.toLowerCase());
-            });
-            this.contacts = filteredContacts;
-        }
+
+
+
+        // filterContacts(id){
+        //     this.filteredContacts = this.contacts.filter((contact, index)=>{
+        //         return contact.name.toLowerCase().includes(this.searchText.toLowerCase());
+        //     });
+        //     this.contacts = filteredContacts;
+        // }
     }
 }).mount('#app');
