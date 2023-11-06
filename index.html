@@ -96,7 +96,7 @@
                         </div>
                         <div class="col-12 col-header py-2 d-flex align-items-center">
                             <i class="fa-regular fa-face-smile me-3"></i>
-                            <input type="text" class="form-control me-3" placeholder="Send a message" v-model="message" @keyup.enter="newMessage">
+                            <input type="text" class="form-control me-3" placeholder="Send a message" v-model.trim="message" @keyup.enter="newMessage">
                             <i class="fa-regular fa-paper-plane" style="cursor:pointer"></i>
                             <i class="fa-solid fa-microphone"></i>
                         </div>
