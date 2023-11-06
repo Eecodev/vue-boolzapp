@@ -47,23 +47,25 @@
                                 <span class="input-group-text">
                                     <i class="fa-solid fa-magnifying-glass"></i>
                                 </span>
-                                <input type="text" class="form-control" placeholder="Search contacts" v-model="searchText">
+                                <input type="text" class="form-control" placeholder="Search contacts" v-model.trim="searchText" @keyup="filterMy">
                             </div>
                         </div>
 
                         <!-- contacts -->
                         <div class="col-12 flex-grow-1 overflow-y-auto h0">
                             <div class="row">
-                                <div class="col-12 py-2 contact d-flex justify-content-between" :class="{'active': index === activeContactIndex}"  v-for="(contact, index) in filteredContact" :key="contact.id" @click="selectContact(contact.id)" v-show>
-                                    <div class="d-flex">
-                                        <img class="profile" :src="contact.avatar" :alt="contact.name">
-                                        <div class="ms-2">
-                                            <strong>{{contact.name}}</strong><br>
-                                            <small>{{getLastMessage(contact.id)}}</small>
+                                <div class="col-12 py-2 contact d-flex justify-content-between" :class="{'active': index === activeContactIndex}"  v-for="(contact, index) in filteredContact" :key="contact.id" @click="selectContact(contact.id)" v-show="contact.visible">
+                                    <div v-if="contact.visible">
+                                        <div class="d-flex">
+                                            <img class="profile" :src="contact.avatar" :alt="contact.name">
+                                            <div class="ms-2">
+                                                <strong>{{contact.name}}</strong><br>
+                                                <small>{{getLastMessage(contact.id)}}</small>
+                                            </div>
                                         </div>
-                                    </div>
-                                    <div>
-                                        <small>{{getLastAccess(contact.id)}}</small>
+                                        <div>
+                                            <small>{{getLastAccess(contact.id)}}</small>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
@@ -91,14 +93,22 @@
                         </div>
                         <div class="col-12 flex-grow-1 overflow-y-auto h0 bg-img">
                             <div class="d-flex py-3" v-for="(msg, index) in activeContact.messages" :key="index">
-                                <div class="msg" :class="msg.status">{{msg.message}}</div>
+                                <div class="msg" :class="msg.status">{{msg.message}}
+                                    <div class="dropdown">
+                                        <ul class="dropdown-menu">
+                                          <li><a class="dropdown-item" href="#">Action</a></li>
+                                          <li><a class="dropdown-item" href="#">Another action</a></li>
+                                          <li><a class="dropdown-item" href="#">Something else here</a></li>
+                                        </ul>
+                                      </div>
+                                </div>
                             </div>
                         </div>
                         <div class="col-12 col-header py-2 d-flex align-items-center">
                             <i class="fa-regular fa-face-smile me-3"></i>
                             <input type="text" class="form-control me-3" placeholder="Send a message" v-model.trim="message" @keyup.enter="newMessage">
-                            <i class="fa-regular fa-paper-plane" style="cursor:pointer"></i>
-                            <i class="fa-solid fa-microphone"></i>
+                            <i class="fa-regular fa-paper-plane" style="cursor:pointer" v-if="message"></i>
+                            <i class="fa-solid fa-microphone" v-else></i>
                         </div>
                     </div>
                 </div>
