@@ -11,6 +11,7 @@ createApp({
             message: '',
             resp: 'ok',
             msgIndex: null,
+            showChat: false
         }
     },
     methods:{
