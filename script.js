@@ -76,7 +76,7 @@ createApp({
                 this.msgIndex = null;
             }
         },
-        deleteMsg(){
+        deleteMsg(index){
             this.activeContact.messages.splice(index,1);
             this.msgIndex = null;
         }
